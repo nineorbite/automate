@@ -132,98 +132,111 @@ const CarList = ({ onEdit }) => {
             {/* Cars Grid/List */}
             <div className="grid gap-4">
                 {cars.length === 0 ? (
-                    <div className="card text-center py-12">
-                        <p className="text-gray-500">No cars found. Add your first car to get started!</p>
+                    <div className="card text-center py-16 bg-white border border-dashed border-gray-300 rounded-3xl">
+                        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span className="text-4xl">🚗</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">No cars found</h3>
+                        <p className="text-gray-500 max-w-sm mx-auto">Click the "Add New Car" button to start building your inventory.</p>
                     </div>
                 ) : (
                     cars.map((car) => (
-                        <div key={car._id} className="card group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden">
-                            <div className="flex flex-col md:flex-row gap-6">
+                        <div key={car._id} className="card group p-0 overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300">
+                            <div className="flex flex-col md:flex-row h-full">
                                 {/* Car Image - Clickable for Gallery */}
                                 <div
-                                    className="w-full md:w-56 h-40 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden relative shadow-inner cursor-pointer"
+                                    className="w-full md:w-72 lg:w-80 h-56 md:h-auto relative cursor-pointer overflow-hidden"
                                     onClick={() => openGallery(car)}
                                 >
                                     {car.images && car.images.length > 0 ? (
                                         <img
                                             src={car.images[0]}
                                             alt={`${car.brand?.name} ${car.model?.name}`}
-                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                                         />
                                     ) : (
-                                        <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-50">
-                                            <span className="text-4xl mb-2">📷</span>
-                                            <span className="text-sm font-medium">No Image</span>
+                                        <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-100">
+                                            <span className="text-4xl mb-2 opacity-30">📷</span>
+                                            <span className="text-sm font-medium opacity-50">No Image</span>
                                         </div>
                                     )}
-                                    <div className="absolute top-2 left-2 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-xs font-bold rounded-md">
+
+                                    {/* Overlay Gradient on Image */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                    <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-md text-gray-900 text-xs font-bold rounded-full shadow-sm">
                                         {car.stock_code}
                                     </div>
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                        <span className="bg-black/50 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">view gallery</span>
+
+                                    {/* View Gallery Badge */}
+                                    <div className="absolute bottom-3 right-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                        <span className="bg-white/90 text-gray-900 px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-sm flex items-center gap-1.5">
+                                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                            View Photos
+                                        </span>
                                     </div>
                                 </div>
 
-                                <div className="flex-1 flex flex-col justify-between py-1">
+                                <div className="flex-1 flex flex-col justify-between p-6 bg-white relative">
                                     <div>
-                                        <div className="flex justify-between items-start mb-3">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-5">
                                             <div>
-                                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                                                    {car.brand?.name} {car.model?.name}
+                                                <div className="text-xs font-bold text-indigo-600 mb-1 uppercase tracking-wider">{car.brand?.name}</div>
+                                                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors leading-tight">
+                                                    {car.model?.name} <span className="text-gray-400 font-normal ml-1">{car.variant}</span>
                                                 </h3>
-                                                <p className="text-sm text-gray-500 font-medium">{car.variant}</p>
                                             </div>
-                                            <div className="text-right">
-                                                <span className="block text-2xl font-bold text-primary-600">
+                                            <div className="text-left sm:text-right">
+                                                <span className="block text-2xl font-bold text-gray-900 tracking-tight">
                                                     ₹{car.price?.toLocaleString()}
                                                 </span>
+                                                <span className="text-xs text-gray-500 font-medium">+ Taxes/Registration</span>
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3 gap-x-6 text-sm text-gray-600 mb-4">
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.year_of_manufacture}
+                                        {/* Specs Grid */}
+                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">📅</span>
+                                                <span className="text-sm font-semibold text-gray-700">{car.year_of_manufacture}</span>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.fuel_type}
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">⛽</span>
+                                                <span className="text-sm font-semibold text-gray-700">{car.fuel_type}</span>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.transmission}
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">⚙️</span>
+                                                <span className="text-sm font-semibold text-gray-700">{car.transmission}</span>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.km?.toLocaleString()} km
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">🛣️</span>
+                                                <span className="text-sm font-semibold text-gray-700">{car.km?.toLocaleString()} km</span>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.ownership}
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">👤</span>
+                                                <span className="text-sm font-semibold text-gray-700">{car.ownership}</span>
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                                {car.registration_state}
-                                            </div>
-                                            <div className="flex items-center gap-2 col-span-2">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
-                                                <span className="font-semibold text-gray-900">RTO: {car.rto || 'N/A'}</span>
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100 sm:col-span-2">
+                                                <span className="text-gray-400">📍</span>
+                                                <span className="text-sm font-semibold text-gray-700 truncate">{car.registration_state} ({car.rto || 'N/A'})</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-3 pt-4 border-t border-gray-50 mt-auto">
+                                    <div className="flex gap-3 pt-5 border-t border-gray-100 mt-auto">
                                         <button
                                             onClick={() => onEdit(car)}
-                                            className="btn btn-secondary text-sm flex-1"
+                                            className="flex-1 px-4 py-2.5 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all text-sm flex items-center justify-center gap-2 group/btn"
                                         >
+                                            <svg className="w-4 h-4 text-gray-400 group-hover/btn:text-indigo-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                             Edit Details
                                         </button>
                                         <button
                                             onClick={() => handleDelete(car._id)}
-                                            className="btn btn-danger text-sm flex-1 opacity-90 hover:opacity-100"
+                                            className="flex-1 px-4 py-2.5 bg-white border border-red-100 text-red-600 font-semibold rounded-xl hover:bg-red-50 hover:border-red-200 transition-all text-sm flex items-center justify-center gap-2 group/btn"
                                         >
-                                            Delete Car
+                                            <svg className="w-4 h-4 text-red-400 group-hover/btn:text-red-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                            Delete
                                         </button>
                                     </div>
                                 </div>
