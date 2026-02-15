@@ -8,7 +8,7 @@ import axios from 'axios';
 
 // Set base URL from environment variable
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-axios.defaults.withCredentials = true; // Optional: depending on your CORS setup
+// axios.defaults.withCredentials = true; // Not needed for JWT in headers and causes CORS issues with * origins
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {

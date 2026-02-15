@@ -47,15 +47,15 @@ const Dashboard = () => {
             <header className="bg-white shadow-md z-10 sticky top-0">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="bg-primary-600 p-2 rounded-lg shadow-lg">
+                        <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2.5 rounded-2xl shadow-lg shadow-indigo-200">
                             <span className="text-2xl">🚗</span>
                         </div>
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900 tracking-tight leading-none">
-                                Automate <span className="text-primary-600">By NineOrbite</span>
+                                Automate <span className="text-indigo-600">By NineOrbite</span>
                             </h1>
-                            <p className="text-xs text-gray-500 font-medium tracking-wide uppercase mt-1">
-                                Premium Car Management
+                            <p className="text-[10px] text-gray-400 font-bold tracking-[0.1em] uppercase mt-1">
+                                Premium Car Management System
                             </p>
                         </div>
                     </div>
@@ -83,12 +83,12 @@ const Dashboard = () => {
                     <nav className="flex space-x-8" aria-label="Tabs">
                         <button
                             onClick={() => setActiveTab('cars')}
-                            className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'cars'
-                                ? 'border-primary-500 text-primary-600'
+                            className={`py-4 px-1 border-b-2 font-semibold text-sm transition-colors ${activeTab === 'cars'
+                                ? 'border-indigo-600 text-indigo-600'
                                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                                 }`}
                         >
-                            All Cars
+                            All Inventory
                         </button>
                         {isAdmin && (
                             <button
