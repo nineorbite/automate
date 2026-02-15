@@ -219,6 +219,12 @@ const CarList = ({ onEdit }) => {
                                                 <span className="text-gray-400">👤</span>
                                                 <span className="text-sm font-semibold text-gray-700">{car.ownership}</span>
                                             </div>
+                                            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-gray-400">🛡️</span>
+                                                <span className="text-sm font-semibold text-gray-700 truncate">
+                                                    {car.insurance_valid_till ? new Date(car.insurance_valid_till).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'NA'}
+                                                </span>
+                                            </div>
                                             <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100 sm:col-span-2">
                                                 <span className="text-gray-400">📍</span>
                                                 <span className="text-sm font-semibold text-gray-700 truncate">{car.registration_state} ({car.rto || 'N/A'})</span>

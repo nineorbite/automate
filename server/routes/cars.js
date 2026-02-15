@@ -94,7 +94,8 @@ router.post('/', auth, upload.array('images', 10), async (req, res) => {
             ownership,
             registration_state,
             rto,
-            plate_number
+            plate_number,
+            insurance_valid_till
         } = req.body;
 
         // Check if stock_code already exists
@@ -136,6 +137,7 @@ router.post('/', auth, upload.array('images', 10), async (req, res) => {
             ownership,
             registration_state,
             rto,
+            insurance_valid_till,
             images,
             createdBy: req.user._id
         });
