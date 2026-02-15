@@ -67,6 +67,10 @@ const carSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    insurance_valid_till: {
+        type: Date,
+        required: false
+    },
     images: [{
         type: String, // Cloudinary URLs
     }],

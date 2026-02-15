@@ -20,7 +20,8 @@ const CarForm = ({ car, onSave, onCancel }) => {
         ownership: '',
         registration_state: '',
         rto: '',
-        plate_number: ''
+        plate_number: '',
+        insurance_valid_till: ''
     });
 
     // Helper to map State Names to Codes (Common Indian States)
@@ -98,6 +99,7 @@ const CarForm = ({ car, onSave, onCancel }) => {
                 registration_state: car.registration_state || '',
                 rto: car.rto || '',
                 plate_number: car.plate_number || '', // Critical for uncontrolled input fix
+                insurance_valid_till: car.insurance_valid_till ? new Date(car.insurance_valid_till).toISOString().split('T')[0] : ''
             });
             setExistingImages(car.images || []);
             setImagesToRemove([]);
@@ -565,6 +567,22 @@ const CarForm = ({ car, onSave, onCancel }) => {
                                     />
                                 </div>
 
+                                {/* Insurance Valid Till */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        Insurance Valid Till <span className="text-gray-400 text-xs">(Optional)</span>
+                                    </label>
+                                    <input
+                                        type="date"
+                                        name="insurance_valid_till"
+                                        value={formData.insurance_valid_till}
+                                        onChange={handleChange}
+                                        className="input-field disabled:bg-gray-100 disabled:text-gray-500"
+                                        disabled={loading}
+                                    />
+                                    <p className="mt-1 text-xs text-gray-400 font-medium">Leave empty if not available</p>
+                                </div>
+
                                 {/* Vehicle Plate Number */}
                                 <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -691,10 +709,10 @@ const CarForm = ({ car, onSave, onCancel }) => {
                             </div>
                         </div>
                     </div>
-                </fieldset>
+                </fieldset >
 
                 {/* Form Actions */}
-                <div className="flex gap-3 pt-4 border-t border-gray-200">
+                < div className="flex gap-3 pt-4 border-t border-gray-200" >
                     <button
                         type="submit"
                         disabled={loading}
@@ -721,9 +739,9 @@ const CarForm = ({ car, onSave, onCancel }) => {
                     >
                         Cancel
                     </button>
-                </div>
-            </form>
-        </div>
+                </div >
+            </form >
+        </div >
     );
 };
 
