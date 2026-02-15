@@ -262,9 +262,11 @@ const CarForm = ({ car, onSave, onCancel }) => {
         <div className="card max-w-4xl relative">
             <form onSubmit={handleSubmit} className="space-y-6">
                 <fieldset disabled={loading} className="space-y-6 group-disabled:opacity-70 transition-opacity">
-                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 mb-6">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                            <span className="w-1 h-6 bg-primary-500 rounded-full"></span>
+                    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-6">
+                        <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
+                            <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 text-sm">
+                                01
+                            </span>
                             Basic Information
                         </h3>
                         {/* ... rest of the form ... */}
@@ -393,9 +395,11 @@ const CarForm = ({ car, onSave, onCancel }) => {
                         </div>
 
                         {/* Technical Details */}
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 mb-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="w-1 h-6 bg-primary-500 rounded-full"></span>
+                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-6">
+                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 text-sm">
+                                    02
+                                </span>
                                 Technical Details
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -479,9 +483,11 @@ const CarForm = ({ car, onSave, onCancel }) => {
                         </div>
 
                         {/* Price & Registration */}
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 mb-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="w-1 h-6 bg-primary-500 rounded-full"></span>
+                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-6">
+                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 text-amber-600 text-sm">
+                                    03
+                                </span>
                                 Price & Registration
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -584,9 +590,11 @@ const CarForm = ({ car, onSave, onCancel }) => {
                         </div>
 
                         {/* Car Images */}
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 mb-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="w-1 h-6 bg-primary-500 rounded-full"></span>
+                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mb-6">
+                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-50 text-purple-600 text-sm">
+                                    04
+                                </span>
                                 Car Images
                             </h3>
 
@@ -595,13 +603,15 @@ const CarForm = ({ car, onSave, onCancel }) => {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Upload Images <span className="text-gray-500 text-xs">(Min 4, Max 10)</span>
                                 </label>
-                                <div className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg transition-colors bg-white ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:border-primary-500'}`}>
-                                    <div className="space-y-1 text-center">
-                                        <span className="text-4xl">📸</span>
+                                <div className={`mt-1 flex justify-center px-6 pt-8 pb-10 border-2 border-gray-200 border-dashed rounded-2xl transition-all duration-200 bg-gray-50/50 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:border-indigo-400 hover:bg-indigo-50/30 group'}`}>
+                                    <div className="space-y-2 text-center">
+                                        <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                                            <span className="text-3xl">📸</span>
+                                        </div>
                                         <div className="flex text-sm text-gray-600 justify-center mt-2">
                                             <label
                                                 htmlFor="file-upload"
-                                                className={`relative cursor-pointer bg-white rounded-md font-medium text-primary-600 focus-within:outline-none ${!loading && 'hover:text-primary-500'}`}
+                                                className={`relative cursor-pointer font-bold text-indigo-600 focus-within:outline-none ${!loading && 'hover:text-indigo-500'}`}
                                             >
                                                 <span>Upload files</span>
                                                 <input
