@@ -18,7 +18,7 @@ const Login = () => {
 
         if (result.success) {
             toast.success('Welcome back!');
-            navigate('/dashboard');
+            navigate('/dashboard', { replace: true });
         } else {
             toast.error(result.message || 'Invalid credentials');
         }
